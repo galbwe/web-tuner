@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+}
+
+.page-title {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.record-buttons {
+    width: 25%;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: 100px;
+    height: 50px;
+}
+
+.record {
+   background-color: rgb(89, 180, 255);
+}
+
+.stop {
+    background-color: rgb(255, 117, 117);
+}
+
+.notes {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.note {
+    flex: 1;
+    font-size: xx-large;
+    background: whitesmoke;
+    color: #aaa;
+    align-items: baseline;
+}
+
+.active {
+    background-color: rgb(125, 253, 93);
+    color: green;
+}
