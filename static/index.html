@@ -11,31 +11,52 @@
 </head>
 <body>
     <main>
-        <h1 class="page-title">Tuner</h1>
-        <div class="record-buttons">
-            <button class="button record">Record</button>
-            <button class="button stop">Stop</button>
-        </div>
-        <div class="notes">
-            <div class="note no-note active">--</div>
-            <div class="note a">A</div>
-            <div class="note b-flat">B&flat;/A&sharp;</div>
-            <div class="note b">B</div>
-            <div class="note c">C</div>
-            <div class="note d-flat">D&flat;/C&sharp;</div>
-            <div class="note d">D</div>
-            <div class="note e-flat">E&flat;/D&sharp;</div>
-            <div class="note e">E</div>
-            <div class="note f">F</div>
-            <div class="note g-flat">G&flat;/F&sharp;</div>
-            <div class="note g">G</div>
-            <div class="note a-flat">A&flat;/G&sharp;</div>
-        </div>
-        <div class="note-qualities">
-            <div class="note-quality no-note active"><p>--</p></div>
-            <div class="note-quality good"><p>Good</p></div>
-            <div class="note-quality flat"><p>Flat</p></div>
-            <div class="note-quality sharp"><p>Sharp</p></div>
+        <h1 class="page-title">Web Tuner</h1>
+        <p class="instructions">
+            Press "Record" to let the tuner use your mic, then play your instrument.
+            The tuner will tell you what note you played and how close
+            your instrument is to in-tune. Press "Stop" if
+            you want the tuner to stop using your mic.</p>
+        <div class="tuner">
+            <div class="record-buttons">
+                <button class="button record">Record</button>
+                <button class="button stop">Stop</button>
+            </div>
+            <div class="notes">
+                <div class="note no-note">--</div>
+                <div class="note a">A</div>
+                <div class="note b-flat active flat">B&flat;/A&sharp;</div>
+                <div class="note b">B</div>
+                <div class="note c">C</div>
+                <div class="note d-flat">D&flat;/C&sharp;</div>
+                <div class="note d">D</div>
+                <div class="note e-flat">E&flat;/D&sharp;</div>
+                <div class="note e">E</div>
+                <div class="note f">F</div>
+                <div class="note g-flat">G&flat;/F&sharp;</div>
+                <div class="note g">G</div>
+                <div class="note a-flat">A&flat;/G&sharp;</div>
+                <div class="note-qualities">
+                    <div class="note-quality no-note"><p>--</p></div>
+                    <div class="note-quality good"><p>Good!</p></div>
+                    <div class="note-quality flat active"><p>&flat;Flat&flat;</p></div>
+                    <div class="note-quality sharp"><p>&sharp;Sharp&sharp;</p></div>
+                </div>
+
+            </div>
+            <div class="note-data">
+                <div class="note-frequencies">
+                    <div class="frequency actual">
+                        Actual: <span class="hertz">74.5</span> Hz
+                    </div>
+                    <div class="frequency target">
+                        Target: <span class="hertz">76.8</span> Hz
+                    </div>
+                    <div class="frequency diff">
+                        Diff: <span class="hertz">-2.3</span> Hz
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>

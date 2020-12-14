@@ -24,9 +24,6 @@ let frequenciesArray = Object.values(noteFrequencies)
     }, [])
 
 
-console.log(frequenciesArray)
-
-
 let noteLookup = {}
 for (const [note, frequencies] of Object.entries(noteFrequencies)) {
     for (const f of frequencies) {
@@ -82,33 +79,64 @@ function getNoteQuality (
     return diff < 0 ? "flat" : "sharp";
 }
 
+function setFrequencies(actual, target, diff) {
+    actual = Number.parseFloat(actual).toFixed(2);
+    target = Number.parseFloat(target).toFixed(2);
+    diff = Number.parseFloat(diff).toFixed(2);
+    console.log("actual: ", actual)
+    console.log("target: ", target)
+    console.log("diff: ", diff)
+    let actualDiv = document.querySelector(".frequency.actual");
+    actualDiv.querySelector(".hertz").textContent = actual;
+    let targetDiv = document.querySelector(".frequency.target");
+    targetDiv.querySelector(".hertz").textContent = target;
+    let diffDiv = document.querySelector(".frequency.diff");
+    diffDiv.querySelector(".hertz").textContent = diff
+}
+
+function setNullFrequencies() {
+    document.querySelectorAll(".frequency").forEach(div => {
+        div.querySelector(".hertz").textContent = "--";
+    })
+}
+
+function setNoteQuality(closestNote, diff) {
+    document.querySelectorAll('.active').forEach(el => {
+        el.classList.remove("active");
+    })
+    document.querySelectorAll('.note').forEach(el => {
+        el.classList.remove("sharp");
+        el.classList.remove("flat");
+        el.classList.remove("good");
+    })
+
+    let note = document.querySelector(`.${closestNote}`);
+    note.classList.add("active");
+
+    let noteQuality = getNoteQuality(diff);
+    note.classList.add(noteQuality);
+
+    document.querySelector(`.note-quality.${noteQuality}`).classList.add("active");
+}
+
+function setNullNoteQuality() {
+    document.querySelectorAll('.active').forEach(el => {
+        el.classList.remove("active");
+    })
+    document.querySelectorAll('.no-note').forEach(el => {
+        el.classList.add("active");
+    })
+}
+
 function getPitch() {
     pitch.getPitch(function(err, frequency) {
         if (frequency) {
             [closestNote, closestFreq, diff] = findClosestNoteToFrequency(frequency);
-            document.querySelectorAll('.active').forEach(el => {
-                el.classList.remove("active");
-            })
-            document.querySelectorAll('.note').forEach(el => {
-                el.classList.remove("sharp");
-                el.classList.remove("flat");
-                el.classList.remove("good");
-            })
-
-            let note = document.querySelector(`.${closestNote}`);
-            note.classList.add("active");
-
-            let noteQuality = getNoteQuality(diff);
-            note.classList.add(noteQuality);
-
-            document.querySelector(`.note-quality.${noteQuality}`).classList.add("active");
+            setFrequencies(frequency, closestFreq, diff)
+            setNoteQuality(closestNote, diff)
         } else {
-            document.querySelectorAll('.active').forEach(el => {
-                el.classList.remove("active");
-            })
-            document.querySelectorAll('.no-note').forEach(el => {
-                el.classList.add("active");
-            })
+            setNullFrequencies()
+            setNullNoteQuality()
         }
     })
 }
