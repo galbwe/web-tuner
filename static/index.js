@@ -4,7 +4,7 @@ let pitch;
 
 const noteFrequencies = {
     "c": [16.35, 32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01],
-   "c-flat":   [17.32, 34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92],
+   "d-flat":   [17.32, 34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92],
     "d":   [18.35, 36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64],
    "e-flat":   [19.45, 38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03],
     "e":   [20.60, 41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02],
@@ -24,6 +24,9 @@ let frequenciesArray = Object.values(noteFrequencies)
     }, [])
 
 
+console.log(frequenciesArray)
+
+
 let noteLookup = {}
 for (const [note, frequencies] of Object.entries(noteFrequencies)) {
     for (const f of frequencies) {
@@ -33,15 +36,17 @@ for (const [note, frequencies] of Object.entries(noteFrequencies)) {
 
 function findClosestNoteToFrequency(freq) {
     let closestNote;
+    let closestFreq;
     let minDiff = 10000000000.0;
     for (const [dataFreq, note] of Object.entries(noteLookup)) {
         let diff = freq - dataFreq;
         if (Math.abs(diff) < Math.abs(minDiff)) {
             closestNote = note;
+            closestFreq = dataFreq;
             minDiff = diff;
         }
     }
-    return [closestNote, minDiff];
+    return [closestNote, closestFreq, minDiff];
 }
 
 document.querySelector(".record").addEventListener("click", e => {
@@ -66,20 +71,43 @@ function modelLoaded() {
     setInterval(getPitch, 2000);
 }
 
+function getNoteQuality (
+    diff
+) {
+    // returns good, flat, or sharp
+    console.log("diff: ", diff)
+    if (Math.abs(diff) < .75) {
+        return "good";
+    }
+    return diff < 0 ? "flat" : "sharp";
+}
+
 function getPitch() {
     pitch.getPitch(function(err, frequency) {
         if (frequency) {
-            [closestNote, diff] = findClosestNoteToFrequency(frequency);
-            console.log('frequency: ', frequency);
-            console.log('closestNote: ', closestNote);
-            console.log('diff: ', diff);
+            [closestNote, closestFreq, diff] = findClosestNoteToFrequency(frequency);
             document.querySelectorAll('.active').forEach(el => {
-                el.classList.toggle("active");
+                el.classList.remove("active");
             })
-            document.querySelector(`.${closestNote}`).classList.toggle("active");
+            document.querySelectorAll('.note').forEach(el => {
+                el.classList.remove("sharp");
+                el.classList.remove("flat");
+                el.classList.remove("good");
+            })
+
+            let note = document.querySelector(`.${closestNote}`);
+            note.classList.add("active");
+
+            let noteQuality = getNoteQuality(diff);
+            note.classList.add(noteQuality);
+
+            document.querySelector(`.note-quality.${noteQuality}`).classList.add("active");
         } else {
             document.querySelectorAll('.active').forEach(el => {
-                el.classList.toggle("active");
+                el.classList.remove("active");
+            })
+            document.querySelectorAll('.no-note').forEach(el => {
+                el.classList.add("active");
             })
         }
     })
