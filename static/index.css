@@ -1,44 +1,88 @@
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
-main {
-    width: 100%;
+.content {
+    width: 98%;
+    margin-left: auto;
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.text-header {
+    font-size: 24px;
+}
+
+.text-primary {
+    font-size: 16px;
+}
+
+.text-secondary {
+    font-size: 14px;
 }
 
 .page-title {
-    margin: 0 auto;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .instructions {
-    width: 75%;
-    max-width: 800px;
-    margin: 10px auto;
-    padding: 10px;
 }
 
 .tuner {
-    width: 75%;
-    max-width: 800px;
-    margin: 0 auto;
+    background: lightgray;
     display: flex;
-    flex-direction: row;
-    border: 5px solid lightgray;
-    background: whitesmoke;
-}
-
-.tuner > * {
-    padding: 10px;
-}
-
-.record-buttons {
-    display: flex;
-    flex: 1;
     flex-direction: column;
-    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
     align-items: center;
+    margin-bottom: 8px;
+}
+
+[class ^= "col-"] {
+    margin-left: 2%;
+    text-align: center;
+}
+
+.col-1 {
+    width: 14%;
+}
+
+.col-2 {
+    width: 30%;
+}
+
+.col-3 {
+    width: 46%;
+}
+
+.col-4 {
+    width: 62%;
+}
+
+.col-5 {
+    width: 78%;
+}
+
+.col-6 {
+    width: 96%;
+}
+
+.record-button,
+.stop-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-button {
+
 }
 
 .button {
@@ -47,84 +91,60 @@ main {
 }
 
 .record {
-   background-color: rgb(89, 180, 255);
-}
-
-.stop {
-    background-color: rgb(255, 117, 117);
-}
-
-.notes {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.note {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
-    flex: 1;
-    margin: auto;
-    font-size: 56px;
-    text-align: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-.active.no-note {
-    border: 5px solid blue;
-    color: blue;
     background: lightblue;
 }
 
-.active.good {
-    border: 5px solid rgb(42, 112, 25);
-    color: rgb(42, 112, 25);
-    background:rgb(125, 253, 93);
+.stop {
+    background: red;
 }
 
-.active.flat, .active.sharp {
-    border: 5px solid rgb(167, 4, 4);
-    color: rgb(167, 4, 4);
-    background: rgb(255, 146, 146);
+.notes {
+    background: lightseagreen;
+    order: -1;
 }
 
-.note:not(.active) {
-    display: none;
+.note {
+    text-align: center;
 }
 
-.note-data {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-}
 
-.note-qualities {
-    margin: 0 auto;
-    flex: 1;
-    display: flex;
-}
-
-.note-quality {
-    height: 100%;
-    flex: 1;
-    display: flex;
-    border-radius: 10px;
-    font-size: 36px;
-}
-
+.note:not(.active),
 .note-quality:not(.active) {
     display: none;
 }
 
+.note-data {
+}
+
+.note-quality {
+}
+
 .note-frequencies {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-size: 36px;
-    justify-content: space-between;
-    align-items: baseline;
+}
+
+/* @mobileBreakpoint            : 320px; */
+/* MOBILE FIRST */
+
+/* @tabletBreakpoint            : 768px; */
+/* TABLET */
+@media only screen and (max-width: 768px) {
+
+}
+
+/* @computerBreakpoint          : 992px; */
+/* COMPUTER */
+@media only screen and (max-width: 992px) {
+
+}
+
+/* @largeMonitorBreakpoint      : 1280px; */
+/* LARGE MONITOR */
+@media only screen and (max-width: 1280px) {
+
+}
+
+/* @widescreenMonitorBreakpoint : 1920px; */
+/* WIDESCREEN MONITOR */
+@media only screen and (max-width: 1920px) {
+
 }

@@ -10,57 +10,60 @@
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 </head>
 <body>
-    <main>
-        <h1 class="page-title">Web Tuner</h1>
-        <p class="instructions">
-            Press "Record" to let the tuner use your mic, then play your instrument.
-            The tuner will tell you what note you played and how close
-            your instrument is to in-tune. Press "Stop" if
-            you want the tuner to stop using your mic.</p>
+    <main class="content">
+        <div class="page-title">
+            <h1 class="text-header">Web Tuner</h1>
+        </div>
         <div class="tuner">
-            <div class="record-buttons">
-                <button class="button record">Record</button>
-                <button class="button stop">Stop</button>
-            </div>
-            <div class="notes">
-                <div class="note no-note">--</div>
-                <div class="note a">A</div>
-                <div class="note b-flat active flat">B&flat;/A&sharp;</div>
-                <div class="note b">B</div>
-                <div class="note c">C</div>
-                <div class="note d-flat">D&flat;/C&sharp;</div>
-                <div class="note d">D</div>
-                <div class="note e-flat">E&flat;/D&sharp;</div>
-                <div class="note e">E</div>
-                <div class="note f">F</div>
-                <div class="note g-flat">G&flat;/F&sharp;</div>
-                <div class="note g">G</div>
-                <div class="note a-flat">A&flat;/G&sharp;</div>
-                <div class="note-qualities">
-                    <div class="note-quality no-note"><p>--</p></div>
-                    <div class="note-quality good"><p>Good!</p></div>
-                    <div class="note-quality flat active"><p>&flat;Flat&flat;</p></div>
-                    <div class="note-quality sharp"><p>&sharp;Sharp&sharp;</p></div>
+            <div class="row record-buttons">
+                <div class="col-3 record-button">
+                    <button class="button record">Record</button>
                 </div>
-
-            </div>
-            <div class="note-data">
-                <div class="note-frequencies">
-                    <div class="frequency actual">
-                        Actual: <span class="hertz">74.5</span> Hz
-                    </div>
-                    <div class="frequency target">
-                        Target: <span class="hertz">76.8</span> Hz
-                    </div>
-                    <div class="frequency diff">
-                        Diff: <span class="hertz">-2.3</span> Hz
-                    </div>
+                <div class="col-3 stop-button">
+                    <button class="button stop">Stop</button>
                 </div>
             </div>
+            <div class="col-6 row notes flat">
+                <div class="col-3 note text-header no-note">--</div>
+                <div class="col-3 note text-header a">A</div>
+                <div class="col-3 note text-header b-flat active sharp">B&flat;/A&sharp;</div>
+                <div class="col-3 note text-header b">B</div>
+                <div class="col-3 note text-header c">C</div>
+                <div class="col-3 note text-header d-flat">D&flat;/C&sharp;</div>
+                <div class="col-3 note text-header d">D</div>
+                <div class="col-3 note text-header e-flat">E&flat;/D&sharp;</div>
+                <div class="col-3 note text-header e">E</div>
+                <div class="col-3 note text-header f">F</div>
+                <div class="col-3 note text-header g-flat">G&flat;/F&sharp;</div>
+                <div class="col-3 note text-header g">G</div>
+                <div class="col-3 note text-header a-flat">A&flat;/G&sharp;</div>
+                <div class="col-3 note-quality text-primary no-note"><p>--</p></div>
+                <div class="col-3 note-quality text-primary good"><p>Good!</p></div>
+                <div class="col-3 note-quality text-primary flat active"><p>&flat;Flat&flat;</p></div>
+                <div class="col-3 note-quality text-primary sharp"><p>&sharp;Sharp&sharp;</p></div>
+            </div>
+            <div class="row note-data">
+                <div class="col-2 frequency actual">
+                    Actual: <span class="hertz">74.5</span> Hz
+                </div>
+                <div class="col-2 frequency target">
+                    Target: <span class="hertz">76.8</span> Hz
+                </div>
+                <div class="col-2 frequency diff">
+                    Diff: <span class="hertz">-2.3</span> Hz
+                </div>
+            </div>
+        </div>
+        <div class="instructions">
+            <p class="instructions">
+                Press "Record" to let the tuner use your mic, then play your instrument.
+                The tuner will tell you what note you played and how close
+                your instrument is to in-tune. Press "Stop" if
+                you want the tuner to stop using your mic.</p>
         </div>
 
     </main>
 
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 </body>
 </html>

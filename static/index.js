@@ -83,9 +83,6 @@ function setFrequencies(actual, target, diff) {
     actual = Number.parseFloat(actual).toFixed(2);
     target = Number.parseFloat(target).toFixed(2);
     diff = Number.parseFloat(diff).toFixed(2);
-    console.log("actual: ", actual)
-    console.log("target: ", target)
-    console.log("diff: ", diff)
     let actualDiv = document.querySelector(".frequency.actual");
     actualDiv.querySelector(".hertz").textContent = actual;
     let targetDiv = document.querySelector(".frequency.target");
